@@ -250,7 +250,7 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
 
 <script>
     var num, time;
-    var name, contents, titles, date;
+    // var name, contents, titles, date;
     var datas, what;
     // 修改标题
     $('#wen').html('文章列表');
@@ -288,28 +288,40 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
         
             
             
-            //展示文章细节
-            $.get(
-                'dian.php',
+    //展示文章细节
+    $.get(
+        'dian.php',
+        
+        function(data){
+            datas=data;
+            what=JSON.parse(datas);
+            for(i in what){
                 
-                function(data){
-                    datas=data;
-                    what=JSON.parse(datas);
-                    for(i in what){
-                        
-                        
-                                            
-                        $('#content').append('<div><span>'+what[i]['title']+
-                            '</span><br><span>'+what[i]['user_id']+what[i]['time']+'</span><br><span>'+
-                                what[i]['content']+'</span><br>'   )
-                        
+                
+                                    
+                $('#content').append('<div><span>'+what[i]['title']+
+                    '</span><br><span>'+what[i]['user_id']+what[i]['time']+'</span><br><span>'+
+                        what[i]['content']+'</span><br>'   )
+                
 
-                    }
+            }
 
-                    
+            
 
-                }
-            )
+        }
+    )
+
+    // 展示文章日期（去重）
+    $.get(
+        'date.php',
+        function(data){
+            num=data;
+            time=JSON.parse(num);
+            for(i in time){
+                $('.none').append('<li><a href="#">'+time[i]['time']+'</a></li>')
+            }
+        }
+    )
          
         
 //     }
