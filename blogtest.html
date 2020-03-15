@@ -172,42 +172,16 @@ margin-top: 10px;margin-bottom: 10px;">
     
     <div class="col-xs-12 col-sm-7" id="new">
         <label style="font-size: 180%;" id="wen">From the Firehose</label>
-        <div style="border-bottom:1px solid rgb(52,58,64)">
-            <label style="font-size: 120%;font-weight: 100;"></label>
+        <div style="border-bottom:1px solid rgb(52,58,64)" >
+            <label style="font-size: 120%;font-weight: 100;" ></label>
         </div>
         <div style="border-bottom:1px solid rgb(52,58,64);
         margin-top: 10px;
         margin-bottom: 10px;
-        padding-bottom: 10px;">
-            <label style="font-size: 180%;font-weight: 100;" id="title"></label><br>
-
-            <label id="time_name"></label><br>
-            <label id="content"></label>
+        padding-bottom: 10px;" id="box_0">
+           
         </div>
-        <!-- <div >
-            <label>
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.<br>
-                Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.<br>
-                Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.<br>
-
-            </label>
-            <label style="font-size: 180%;">
-                Heading
-            </label><br>
-            <label>
-                Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.<br>
-
-            </label>
-            <label style="font-size: 180%;">
-                Sub-heading
-            </label>
-            <label>
-                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.<br>
-
-                Example code block<br>
-                Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
-            </label>
-        </div> -->
+       
         <div style="margin:30px">
             <button class="btn" style="border-color:blue;background-color: white;">
             Older</button>
@@ -215,6 +189,7 @@ margin-top: 10px;margin-bottom: 10px;">
                 Older</button>
         </div>
     </div>
+
     <div class="col-xs-12 col-sm-5">
         <div style="background-color: rgba(52,58,64,0.4);padding:5px;">
             <label style="font-size:150%;">About</label><br>
@@ -250,43 +225,10 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
 
 <script>
     var num, time;
-    // var name, contents, titles, date;
     var datas, what;
+
     // 修改标题
-    $('#wen').html('文章列表');
-
-
-    // 展示发布文章的日期（去重）
-    // $.get(
-    //     'getnum.php',
-    //     function(data){
-            
-            // for(i=1;i<=data;i++){
-                // $('.pull-left').html(data);
-                // $.get(
-                // '.php',
-                // {times:1},
-                // function(data){
-                //     time=data;
-                //     $('.none').append('<li><a href="#">'+time+'</a></li>');
-                //     }
-                // )
-
-               
-            //}
-
-            
-        // }
-
-    // )
-    
-    // 展示文章内容
-    // $.get(
-    // 'getall.php',
-    // function(data){
-        
-        
-            
+    $('#wen').html('文章列表');     
             
     //展示文章细节
     $.get(
@@ -296,14 +238,31 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
             datas=data;
             what=JSON.parse(datas);
             for(i in what){
+                a=parseInt(i)+1;
+                // a=i+1;
+                // console.log('i='+i);
+                // console.log('a='+a);             
+                // $('#content').append('<div><span>'+what[i]['title']+
+                //     '</span><br><span>'+what[i]['user_id']+what[i]['time']+'</span><br><span>'+
+                //         what[i]['content']+'</span><br>'   )
                 
                 
-                                    
-                $('#content').append('<div><span>'+what[i]['title']+
-                    '</span><br><span>'+what[i]['user_id']+what[i]['time']+'</span><br><span>'+
-                        what[i]['content']+'</span><br>'   )
+                $('#box_'+i).append('<label id="title_'+i+'">'+what[i]['title']+'</label><br>');
+                $('#title_'+i).css("font-size","200%");
                 
+                $('#box_'+i).append('<label id="time_name_'+i+'">'+what[i]['time']+'-'+what[i]['user_id']+'</label><br>');
+                $('#time_name_'+i).css("font-weight","100");
 
+                $('#box_'+i).append('<label id="content_'+i+'">'+what[i]['content']+'</label><br>')
+                $('#content_'+i).css("font-size","120%");
+
+                $('#box_'+i).after('<div id="box_'+a+'"></div>');
+                $('#box_'+a).css({
+                    "border-bottom":"1px solid rgb(52,58,64)",
+                    "margin-top": "10px",
+                    "margin-bottom": "10px",
+                    "padding-bottom": "10px"
+                })
             }
 
             
@@ -323,11 +282,7 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
         }
     )
          
-        
-//     }
 
-
-// )
    
     
 
