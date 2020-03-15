@@ -263,14 +263,14 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
             
             // for(i=1;i<=data;i++){
                 // $('.pull-left').html(data);
-                $.get(
-                '.php',
-                {times:1},
-                function(data){
-                    time=data;
-                    $('.none').append('<li><a href="#">'+time+'</a></li>');
-                    }
-                )
+                // $.get(
+                // '.php',
+                // {times:1},
+                // function(data){
+                //     time=data;
+                //     $('.none').append('<li><a href="#">'+time+'</a></li>');
+                //     }
+                // )
 
                
             //}
@@ -299,9 +299,9 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
                         
                         
                                             
-                        $('#content').append('<div><span>'+i['title']+
-                            '</span><br><span>'+i['user_id']+i['time']+'</span><br><span>'+
-                            i['content']+'</span><br>'   )
+                        $('#content').append('<div><span>'+what[i]['title']+
+                            '</span><br><span>'+what[i]['user_id']+what[i]['time']+'</span><br><span>'+
+                                what[i]['content']+'</span><br>'   )
                         
 
                     }
