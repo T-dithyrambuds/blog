@@ -30,8 +30,9 @@ text-align: center;margin-top:40px">
         <label style="color:pink">:placeholder-shown </label>pseudo-element. 
         <a href="#">Works in latest Chrome, Safari, and Firefox.</a></label><br>
     <!-- <div class="input-group input-group-lg"> -->
-    <input type="text" class="form-control input-group-lg " id="nickname" placeholder="Username" style="margin-top: 20px;"><br>
-    <input type="password" class="form-control input-group-lg" id="password" placeholder="Password" > 
+    <input type="text" class="form-control input-group-lg " id="nickname" placeholder="Username" style="margin-top: 20px;" ><br>
+    <input type="password" class="form-control input-group-lg" id="password" placeholder="Password" value=''> <br>
+    <label id="notice"></label><br>
     <label style="font-weight: 100;margin-top: 10px;
     width: 350px;margin-left: -245px;">
         <input type="checkbox">Remember me
@@ -49,10 +50,30 @@ text-align: center;margin-top:40px">
 </div>
 
 <script>
-    $.post(
-        'load.php',
-         
+    // nickname=$('#nickname').val();
+    $('.btn-lg').click(function(){
+        $.post(
+        'login.php',
+        {name:$('#nickname').val(),
+         pass:$('#password').val()},
+        
+        function(data){
+            
+            // console.log(data);
+            if(data==0){
+                $('#notice').html('用户名不存在或密码错误');
+                $('#notice').css('color','red');
+
+            }else{
+                
+                $('#notice').html('登陆成功！');
+                $('#notice').css('color','green');
+            }
+        }
     )
+
+    })
+    
 
 </script>
 
