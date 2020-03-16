@@ -1,7 +1,18 @@
+<?php
+
+if (empty($_COOKIE["username"])){
+      header('Location: login.html');
+}else{
+    echo '您已登录成功,您的用户名是：' .$_COOKIE['username'] ;die;
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>  
-    <link rel="icon" href="./images/load.png" type="image/x-icon"/>
+    <link rel="icon" href="load.png" type="image/x-icon"/>
     <title>Load</title> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -23,7 +34,7 @@
 text-align: center;margin-top:40px">
 
 <div class="container outer">
-    <img src="./images/top.png"><br>
+    <img src="top.png"><br>
     <label style="font-size:200%">Floating labels</label><br>
     <label style="font-size: 120%;font-weight: 100;width: 350px;">
         Build form controls with floating labels via the 
@@ -74,16 +85,12 @@ text-align: center;margin-top:40px">
 
     })
 
-    // $.get(
-    //     'getcookies.php',
-    //     {name:$('#nickname').val()},
-    //     function(data){
-            
-    //     }
-    // )
+    
     
 
 </script>
 
 </body>
 </html>
+
+<?php }?>

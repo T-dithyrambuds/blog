@@ -2,7 +2,7 @@
 error_reporting(0);
 class mydb extends sqlite3{
     function __construct(){
-        $this->open('user.db');
+        $this->open('./db/user.db');
     }
 }
 
@@ -19,5 +19,9 @@ $result=$db->query($sql);
 $passw=$result->fetchArray(SQLITE3_ASSOC);
 
 echo $passw['num'];
+
+if($passw['num']==1){
+    setcookie('username', $name);
+}
 
 ?>
