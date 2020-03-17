@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
-    <div id="dian">
-        
-    </div>
-<hr>
-    <p id="p1"></p>
-    <hr>
-    <span id="s1"></span>
+    <a href="#" onclick=del(1) style="display:none">点我删除</a>
 
+    <script>
+        $('a').show();
+        function del(user_id) {
+            $('a').hide();
+            alert(user_id + '删掉啦');
+        }
+    </script>
 
 </body>
 </html>

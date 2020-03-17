@@ -174,6 +174,7 @@ margin-top: 10px;margin-bottom: 10px;">
     
     <div class="col-xs-12 col-sm-7" id="new">
         <label style="font-size: 180%;" id="wen">From the Firehose</label>
+        <label id="message"></label>
         <div style="border-bottom:1px solid rgb(52,58,64)" >
             <label style="font-size: 120%;font-weight: 100;" ></label>
         </div>
@@ -253,7 +254,7 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
                 $('#title_'+i).css("font-size","200%");
                 
                 $('#box_'+i).append('<label id="time_name_'+i+'">'+what[i]['time']+'-'+what[i]['user_id']+
-                '<a href="delete.php?id='+what[i]['ID']+'&user_id='+what[i]['user_id']+'">删除</a><a href="#">修改</a></label><br>');
+                '&nbsp;<a class="btn-primary btn btn-xs" onclick=\'del('+i+','+what[i]['ID']+',"'+what[i]['user_id']+'")\'>删除</a>&nbsp;<a class="btn-danger btn btn-xs">修改</a></label><br>');
                 $('#time_name_'+i).css("font-weight","100");
 
                 $('#box_'+i).append('<label id="content_'+i+'">'+what[i]['content']+'</label><br>')
@@ -286,7 +287,26 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
     )
 
         
-
+    function del(i,id,user_id){
+        console.log(id+user_id);
+        console.log('yes');
+        if(confirm('删除后不可恢复，真的要删掉吗')){
+            
+            $.get(
+            'delete.php',
+            {
+                id:id,
+                user_id:user_id
+            },
+            function(data){
+                $('#message').html(data);
+                $('#box_'+i).fadeOut('slow');
+            }
+        );
+        }
+        
+        console.log('DONE');
+    }
 
 
 
