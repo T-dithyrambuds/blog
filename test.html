@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .top label{
+            font-size:120%;
+            font-weight: 500;
+        }
+        .top{
+            height:80px;
+            padding-top: 28px;
+            padding-left: 20px;
+            border-bottom: 1px solid rgb(52,58,64);
+        }
+        .form-control {
+            margin-bottom: 20px;
+        }
+        #scroll {
+            overflow-y:auto;
+            /* height:300px; */
+        }
+        .outer{
+            margin-left: 200px;
+            margin-right: 200px;
+            margin-top:50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <label>首页</label>
+    <label>文章发布</label>
+    <label>文章列表</label>
+</div>
+<div class="outer" style="background-color: rgba(52,58,64,0.1);;
+box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
+">
+    <div class="box" style="padding: 20px;">
+        <input type="text" id="title" class="form-control">
+        
+        <textarea rows="12" cols="116" style="margin-bottom: 20px;">
+
+        </textarea><br>
+        
+        <button class="btn-primary btn-lg push">发布</button>
+        <button class="btn-primary btn-lg cancel">取消</button>
+    </div>
+    
+</div>
+
+<script>
+    $('.push').click(function(){
+        $.get
+        $('#title').val()
+    })
+
+</script>
+</body>
+</html>

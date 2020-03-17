@@ -1,6 +1,6 @@
 <?php
 $db = new PDO("sqlite:./db/blog.db");
-$results = $db->query('SELECT * FROM archives')->fetchAll();
+$results = $db->query('SELECT * FROM archives ORDER BY time DESC')->fetchAll();
 // foreach ($results as $key=>$row) {
 	//var_dump($row);
 	// echo $row['title']." ".$row['user_id']." ".$row['time']." ".$row['content']."\n\r";
