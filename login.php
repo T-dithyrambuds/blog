@@ -2,7 +2,7 @@
 error_reporting(0);
 class mydb extends sqlite3{
     function __construct(){
-        $this->open('./db/user.db');
+        $this->open('./db/blog.db');
     }
 }
 
