@@ -75,10 +75,12 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
 
         </textarea><br>
         
-        <button class="btn-primary btn-lg push">
-        <span class="glyphicon glyphicon-ok" style="display:none"></span>
-        发布</button>
+        <button class="btn-primary btn-lg push">发布</button>
         <button class="btn-primary btn-lg cancel">取消</button>
+        
+        <span class="glyphicon glyphicon-ok" style="display:none"></span>
+        <span class="glyphicon glyphicon-remove" style="display:none"></span>
+        <label id="notice" style="color:red"></label>
     </div>
     
 </div>
@@ -95,8 +97,14 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
             },
             function(data){
                 // $('.push').html(data);
-                if(data){
-                    $('.glyphicon').show();
+                console.log(data);
+                if(data==1){
+                    $('.glyphicon-ok').show();
+                    $('#notice').html('发布成功');
+                  
+                }else{
+                    $('.glyphicon-remove').show();
+                    $('#notice').html('发布失败');
                 }
             }
         )

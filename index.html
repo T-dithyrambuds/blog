@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         .topitem {
@@ -250,7 +252,8 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
                 $('#box_'+i).append('<label id="title_'+i+'">'+what[i]['title']+'</label><br>');
                 $('#title_'+i).css("font-size","200%");
                 
-                $('#box_'+i).append('<label id="time_name_'+i+'">'+what[i]['time']+'-'+what[i]['user_id']+'</label><br>');
+                $('#box_'+i).append('<label id="time_name_'+i+'">'+what[i]['time']+'-'+what[i]['user_id']+
+                '<a href="delete.php?id='+what[i]['ID']+'&user_id='+what[i]['user_id']+'">删除</a><a href="#">修改</a></label><br>');
                 $('#time_name_'+i).css("font-weight","100");
 
                 $('#box_'+i).append('<label id="content_'+i+'">'+what[i]['content']+'</label><br>')
@@ -281,17 +284,17 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
             }
         }
     )
-         
 
-   
-    
+        
 
-    
-    
-    
 
-    
-    
+
+
+
+
+
+
+
 </script>
 
 </body>

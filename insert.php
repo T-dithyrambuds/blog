@@ -4,7 +4,7 @@ $user_id=$_COOKIE['username'];
 $title=$_POST['title'];
 $content=$_POST['content'];
 $time=date('Y/m/d');
-echo $time;
+// echo $time;
 
 
 class mydb extends sqlite3{
@@ -19,9 +19,12 @@ $sql=<<<EOF
     VALUES('$user_id', '$title', '$content', '$time');
 EOF;
 
-// echo $sql;die;
+
 
 $result=$db->exec($sql);
 
-print_r($result);
+if($result==1){
+    print_r($result);
+}
+
 ?>
