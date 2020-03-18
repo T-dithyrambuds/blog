@@ -254,7 +254,8 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
                 $('#title_'+i).css("font-size","200%");
                 
                 $('#box_'+i).append('<label id="time_name_'+i+'">'+what[i]['time']+'-'+what[i]['user_id']+
-                '&nbsp;<a class="btn-primary btn btn-xs" onclick=\'del('+i+','+what[i]['ID']+',"'+what[i]['user_id']+'")\'>删除</a>&nbsp;<a class="btn-danger btn btn-xs">修改</a></label><br>');
+                '&nbsp;<a class="btn-primary btn btn-xs btn-up" onclick=\'del('+i+','+what[i]['ID']+',"'+what[i]['user_id']+
+                '")\'>删除</a>&nbsp;<a href="post.php?archives_id='+what[i]['ID']+'" class="btn-danger btn btn-xs btn-up" onclick=\'upd('+i+',"'+what[i]['ID']+'")\'>修改</a></label><br>');
                 $('#time_name_'+i).css("font-weight","100");
 
                 $('#box_'+i).append('<label id="content_'+i+'">'+what[i]['content']+'</label><br>')
@@ -296,7 +297,8 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
             'delete.php',
             {
                 id:id,
-                user_id:user_id
+                user_id:user_id,
+                type:1
             },
             function(data){
                 $('#message').html(data);
@@ -308,13 +310,58 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
         console.log('DONE');
     }
 
+    $(
+        $.get(
+            'judge.php',
+            function(data){
+                if(data==0){
+                    $('.btn-up').hide();
+                }
+            }
+        )
+    )
+ 
+    // function upd(i,id){     
+         
+    //     $('#box_'+i).append('<div id="up" style="padding-top:10px;padding-bottom:10px">'+
+    //     '<input type="text" id="title" style="width: 100%;">'+
+    //     '<br><textarea row="12" style="width:100%;margin-top:5px" id="content"></textarea>'+
+    //     '<button class="btn btn-xs btn-down">提交</button></div>');
+    //     $('.btn-down').click(function(){
+            
+    //         $('#up').hide();
+    //         $.get(
+    //         'insert.php',
+    //         {
+    //             id:id,
+    //             type:2,
+    //             title:$('#title').val(),
+    //             content:$('#content').val()
+    //         },
+    //         function(data){
+    //             console.log(data);
+    //             if(data==2){
+    //                 $('#message').html('修改成功~刷新一下~');
+    //             }
+                
+    //         }
+    //         )
+    //     })
+        
+    // }
+
+    function upd(i,id){
+        $.get(
+            'post.php',
+            {
+                archives_id:id
+            }
+        )
+
+    }
 
 
-
-
-
-
-
+    
 </script>
 
 </body>
