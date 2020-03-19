@@ -15,7 +15,7 @@ EOF;
 
 $result=$db->query($sql);
 $result=$result->fetchArray(SQLITE3_ASSOC);
-
+$title=str_replace("'","\'",$result['title']);
 
 ?>
 
@@ -36,7 +36,7 @@ $result=$result->fetchArray(SQLITE3_ASSOC);
             padding: 30px;
             margin: 100px;
             background-color:white;
-            height:300px
+            /* height:300px */
         }
         input{
             margin-bottom: 20px;
@@ -49,6 +49,8 @@ $result=$result->fetchArray(SQLITE3_ASSOC);
         #content{
             padding-top:10px;
             font-size: 120%;
+            height: 300px;
+            overflow-y: scroll;
         }
         #time{
             font-size: 70%;
@@ -75,7 +77,7 @@ $result=$result->fetchArray(SQLITE3_ASSOC);
 
 
     ?>
-    $('#title').html('<?php print_r($result['title']); ?>');
+    $('#title').html('<?php print_r($title); ?>');
     $('#time').html('<?php print_r($result['time']); ?>');
     $('#content').html('<?php print_r($result['content']); ?>');
 

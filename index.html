@@ -259,7 +259,7 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
                 $('#time_name_'+i).css("font-weight","100");
 
                 $('#box_'+i).append('<label id="content_'+i+'">'+what[i]['content']+'</label><br>')
-                $('#content_'+i).css("font-size","120%");
+                $('#content_'+i).css({"font-size":"120%","font-weight":"normal"});
 
                 $('#box_'+i).after('<div id="box_'+a+'"></div>');
                 $('#box_'+a).css({
@@ -293,7 +293,7 @@ background-color: rgba(52,58,64,0.3);margin-top: 30px;">
         console.log('yes');
         if(confirm('删除后不可恢复，真的要删掉吗')){
             
-            $.get(
+            $.post(
             'delete.php',
             {
                 id:id,

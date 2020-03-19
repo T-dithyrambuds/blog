@@ -54,11 +54,13 @@ text-align: center;margin-top:40px">
     $('.btn-lg').click(function(){
         $.post(
         'login.php',
-        {name:$('#nickname').val(),
-         pass:$('#password').val()},
+        {
+            name:$('#nickname').val(),
+            pass:$('#password').val()
+        },
         
         function(data){
-            
+            console.log(data);
             // console.log(data);
             if(data==0){
                 $('#notice').html('用户名不存在或密码错误');

@@ -1,8 +1,8 @@
 <?php
 error_reporting(0);
 
-$user_id=$_GET['user_id'];
-$id=$_GET['id'];
+$user_id=$_POST['user_id'];
+$id=$_POST['id'];
 $user=$_COOKIE['username'];
 // echo 'user_id:'.$user_id;
 // echo 'user:'.$user;

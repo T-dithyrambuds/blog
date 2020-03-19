@@ -11,7 +11,19 @@ if (empty($_COOKIE["username"])){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+    
+    <!-- Include external CSS. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+ 
+    <!-- Include Editor style. -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- CSS rules for styling the element inside the editor such as p, h1, h2, etc. -->
+    <link href="./froala/css/froala_style.min.css" rel="stylesheet" type="text/css" />    
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
@@ -52,9 +64,13 @@ if (empty($_COOKIE["username"])){
             /* height:300px; */
         }
         .outer{
-            margin-left: 200px;
-            margin-right: 200px;
+            margin-left: 20%;
+            margin-right: 20%;
             margin-top:50px;
+        }
+        .fr-element{
+            height:250px;
+            overflow-y:scroll;
         }
     </style>
 </head>
@@ -69,10 +85,10 @@ if (empty($_COOKIE["username"])){
 box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
 ">
     <div class="box" style="padding: 20px;">
-        <input type="text" id="title" class="form-control" value="">
+        <input type="text" id="title" class="form-control" value="" placeholder="title">
         
-        <textarea rows="12"  style="margin-bottom: 20px;width:100%" value="">
-
+        <!-- <textarea rows="12"  style="margin-bottom: 20px;width:100%" value=""> -->
+        <textarea value=""></textarea>
         </textarea><br>
         
         <button class="btn-primary btn-lg push">发布</button>
@@ -85,7 +101,22 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
     
 </div>
 
+ 
+    <!-- Include Editor JS files. -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/js/froala_editor.pkgd.min.js"></script>
+ 
 <script>
+    $(function() { 
+            $('textarea').froalaEditor() 
+    }); 
+    $(function() {
+            $('div#froala-editor').froalaEditor({
+                dragInline: false,
+                toolbarButtons: ['bold', 'italic', 'underline', 'insertImage', 'insertLink', 'undo', 'redo'],
+                pluginsEnabled: ['image', 'link', 'draggable']
+            })
+        });
+
     <?php
     if(!empty($_GET['archives_id'])){
         
@@ -108,9 +139,12 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
         $con=$item['content'];
         $con=trim($con);
         // $con=str_replace(array("\r\n","\n","\r"),"<br>",$con);
+        
+        $title=$item['title'];
+        $title=str_replace("'","\'",$title);
 
         ?>
-        $('#title').attr('value','<?php print_r($item['title']); ?>');
+        $('#title').attr('value','<?php print_r($title); ?>');
 
         var con='<?php print_r($con); ?>';
         var con=con.split('<br>').join('\n');
@@ -121,6 +155,9 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
     ?>
     $('.glyphicon').hide();
     $('.push').click(function(){
+        if($('#title').val()!="" && $('#content').val()!=""){
+
+        
         $.get(
             'insert.php',
             {
@@ -133,20 +170,22 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
             function(data){
                 // $('.push').html(data);
                 
-                if(data==1){
-                    $('.glyphicon-ok').show();
-                    $('#notice').html('发布成功');
+                if(data==0){
+                    $('.glyphicon-remove').show();
+                    $('#notice').html('操作失败');
                   
-                }else if(data==2){
+                }else if(data==1){
                     $('.glyphicon-ok').show();
                     $('#notice').html('修改成功');
                 }else{
-                    $('.glyphicon-remove').show();
-                    $('#notice').html('发布失败');
+                    $('.glyphicon-ok').show();
+                    $('#notice').html('发布成功');
                 }
             }
         )
-       
+        }else{
+            $('#notice').html('你发你嘛');
+        }
     });
 
 </script>

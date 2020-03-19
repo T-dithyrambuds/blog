@@ -11,11 +11,17 @@ $db=new mydb();
 $name=$_POST['name'];
 $pass=$_POST['pass'];
 
+
 $sql=<<<EOF
-    SELECT COUNT(id) num FROM users WHERE nickname='$name' AND passworda='$pass'
+    SELECT COUNT(id) num FROM users WHERE nickname=:name AND passworda=:pass
 EOF;
 
-$result=$db->query($sql);
+$stmt=$db->prepare($sql);
+$stmt->bindValue(':name',$name);
+$stmt->bindValue(':pass',$pass);
+$result=$stmt->execute();
+
+// $result=$db->query($sql);
 $passw=$result->fetchArray(SQLITE3_ASSOC);
 
 echo $passw['num'];
