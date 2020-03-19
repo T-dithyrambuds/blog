@@ -3,6 +3,7 @@ error_reporting(0);
 $user_id=$_COOKIE['username'];
 $title=$_GET['title'];
 $content=$_GET['content'];
+$content=str_replace(array("\r\n","\n","\r"),"<br>",$content);
 $id=$_GET['archives_id'];
 $time=date('Y/m/d');
 // echo $time;

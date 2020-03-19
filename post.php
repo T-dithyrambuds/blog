@@ -104,11 +104,17 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
         $result=$db->query($sql);
         $item=$result->fetchArray(SQLITE3_ASSOC);
         
+
         $con=$item['content'];
         $con=trim($con);
+        // $con=str_replace(array("\r\n","\n","\r"),"<br>",$con);
+
         ?>
         $('#title').attr('value','<?php print_r($item['title']); ?>');
-        $('textarea').val('<?php print_r($con); ?>');
+
+        var con='<?php print_r($con); ?>';
+        var con=con.split('<br>').join('\n');
+        $('textarea').val(con);
         <?php
         
     }
