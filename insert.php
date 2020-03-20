@@ -1,10 +1,11 @@
 <?php
 error_reporting(0);
 $user_id=$_COOKIE['username'];
-$title=$_GET['title'];
-$content=$_GET['content'];
+$title=$_POST['title'];
+$content=$_POST['content'];
+$content_desc=$_POST['content_desc'];
 $content=str_replace(array("\r\n","\n","\r"),"<br>",$content);
-$id=$_GET['archives_id'];
+$id=$_POST['archives_id'];
 $time=date('Y/m/d');
 // echo $time;
 
@@ -19,7 +20,7 @@ $db= new mydb();
 // 修改操作
 if(!empty($id)){
     $sql=<<<EOF
-    UPDATE archives set title='$title',content='$content' WHERE id='$id'
+    UPDATE archives set title='$title',content='$content',content_desc='$content_desc' WHERE id='$id'
 EOF;
 
 $result=$db->exec($sql); 
@@ -33,8 +34,8 @@ print_r($update_flag);
 
 // 创建SQL语句，通过:parm的方式来占位 插入操作
 $sql=<<<EOF
-    INSERT INTO archives (user_id, title, content, time)
-    VALUES(:user_id, :title, :content, :time);
+    INSERT INTO archives (user_id, title, content, content_desc, time)
+    VALUES(:user_id, :title, :content, :content_desc, :time);
 EOF;
 
 
@@ -42,6 +43,7 @@ $stmt = $db->prepare($sql);  // 传入带有占位符的sql语句
 $stmt->bindValue(':user_id', $user_id); // 绑定占位符与参数数据
 $stmt->bindValue(':title', $title);
 $stmt->bindValue(':content', $content);
+$stmt->bindValue(':content_desc', $content_desc);
 $stmt->bindValue(':time', $time);
 $result = $stmt->execute(); // 执行
 

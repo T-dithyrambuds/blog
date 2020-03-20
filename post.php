@@ -158,12 +158,13 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
         if($('#title').val()!="" && $('#content').val()!=""){
 
         
-        $.get(
+        $.post(
             'insert.php',
             {
                 name:$.cookie('username'),
                 title:$('#title').val(),
                 content:$('textarea').val(),
+                content_desc:jQuery($('textarea').froalaEditor('html.get')).text().substring(0,150),
                 archives_id:<?php echo empty($_GET['archives_id'])?'""':$_GET['archives_id']; ?>
                 
             },

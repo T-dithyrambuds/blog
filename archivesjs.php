@@ -15,14 +15,14 @@
             data=JSON.parse(data);
              console.log(data);
                 
-            $('#box_0').append('<label  id="title_0">'+data['title']+'</label><br>');
+            $('#archives').append('<label  id="title_0">'+data['title']+'</label><br>');
             $('#title_0').css({"font-size":"200%","color":"black"});
             
-            $('#box_0').append('<label id="time_name_0">'+data['time']+'-'+data['user_id']+
+            $('#archives').append('<label id="time_name_0">'+data['time']+'-'+data['user_id']+
             '&nbsp;&nbsp;<a href="post.php?archives_id='+data['ID']+'" class="btn-danger btn btn-xs btn-up" onclick=\'upd("'+data['ID']+'")\'>修改</a></label><br>');
             $('#time_name_0').css("font-weight","100");
 
-            $('#box_0').append('<label id="content_0">'+data['content']+'</label><br>')
+            $('#archives').append('<label id="content_0">'+data['content']+'</label><br>')
             $('#content_0').css({"font-size":"120%","font-weight":"normal"});
 
         }

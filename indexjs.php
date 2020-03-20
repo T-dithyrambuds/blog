@@ -47,7 +47,7 @@ $results = $db->query("SELECT COUNT(ID) id FROM archives")->fetchAll();
                 '")\'>删除</a>&nbsp;<a href="post.php?archives_id='+datas[i]['ID']+'" class="btn-danger btn btn-xs btn-up" onclick=\'upd('+i+',"'+datas[i]['ID']+'")\'>修改</a></label><br>');
                 $('#time_name_'+i).css("font-weight","100");
 
-                $('#box_'+i).append('<label id="content_'+i+'">'+datas[i]['content']+'</label><br>')
+                $('#box_'+i).append('<label id="content_'+i+'">'+datas[i]['content_desc']+'</label><br>')
                 $('#content_'+i).css({"font-size":"120%","font-weight":"normal"});
 
                 
