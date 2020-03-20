@@ -18,7 +18,7 @@
 
                 
                 
-                $('#box_'+i).append('<a href="archives_test.php?id='+datas[i]['ID']+'" id="title_'+i+'">'+datas[i]['title']+'</a><br>');
+                $('#box_'+i).append('<a href="show_archive.php?id='+datas[i]['ID']+'" id="title_'+i+'">'+datas[i]['title']+'</a><br>');
                 $('#title_'+i).css({"font-size":"200%","color":"black"});
                 
                 $('#box_'+i).append('<label id="time_name_'+i+'">'+datas[i]['time']+'-'+datas[i]['user_id']+
@@ -91,6 +91,17 @@
 
     }
 
+    // 展示文章日期（去重）
+    $.get(
+        'menu.php',
+        function(data){
+            num=data;
+            time=JSON.parse(num);
+            for(i in time){
+                $('.none').append('<li><a href="#">'+time[i]['time']+'</a></li>')
+            }
+        }
+    )
 
     
 </script>
