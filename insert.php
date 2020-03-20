@@ -29,16 +29,7 @@ $update_flag = $db->changes(); // 获取修改状态如果修改成功，则返�
 print_r($update_flag);
 }else{
 
-/*
-$sql=<<<EOF
-    INSERT INTO archives (user_id, title, content, time)
-    VALUES('$user_id', '$title', '$content', '$time');
-EOF;
-
-
-
-$result=$db->exec($sql);
-*/
+//用另一种插入方式
 
 // 创建SQL语句，通过:parm的方式来占位 插入操作
 $sql=<<<EOF

@@ -184,7 +184,7 @@ box-shadow:0.1px 1px 5px rgba(52,58,64,0.2);
             }
         )
         }else{
-            $('#notice').html('你发你嘛');
+            $('#notice').html('你发你码呢');
         }
     });
 
