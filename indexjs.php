@@ -33,11 +33,12 @@ $results = $db->query("SELECT COUNT(ID) id FROM archives")->fetchAll();
             
             datas=JSON.parse(data);
             for(i in datas){
-                a=parseInt(i)+1;
+                // a=parseInt(i)+1;
+                
+                $('#archives').append('<div class="box" id="box_'+i+'"></div>');
+                
                 
 
-                
-                
                 $('#box_'+i).append('<a href="show_archive.php?id='+datas[i]['ID']+'" id="title_'+i+'">'+datas[i]['title']+'</a><br>');
                 $('#title_'+i).css({"font-size":"200%","color":"black"});
                 
@@ -49,13 +50,8 @@ $results = $db->query("SELECT COUNT(ID) id FROM archives")->fetchAll();
                 $('#box_'+i).append('<label id="content_'+i+'">'+datas[i]['content']+'</label><br>')
                 $('#content_'+i).css({"font-size":"120%","font-weight":"normal"});
 
-                $('#box_'+i).after('<div id="box_'+a+'"></div>');
-                // $('#box_'+a).css({
-                //     "border-bottom":"1px solid rgb(52,58,64)",
-                //     "margin-top": "10px",
-                //     "margin-bottom": "10px",
-                //     "padding-bottom": "10px"
-                // })
+                
+                
             }
 
             

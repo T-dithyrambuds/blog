@@ -16,6 +16,12 @@
             top:50%;
             transform:translateY(-50%);
         }
+        .box{
+            border-bottom:1px solid rgb(52,58,64);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px
+        }
     </style>
 </head>
 <body>
