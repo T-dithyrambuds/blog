@@ -12,9 +12,9 @@
     </div>
     
     <div style="margin:30px">
-        <button class="btn" style="border-color:blue;background-color: white;">
-        Older</button>
-        <button class="btn" style="border-color:rgb(52,58,64);background-color: white;">
-            Older</button>
+        <button class="btn last" style="border-color:blue;background-color: white;">
+        上一页</button>
+        <button class="btn next" style="border-color:rgb(52,58,64);background-color: white;">
+        下一页</button>
     </div>
 </div>

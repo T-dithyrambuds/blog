@@ -1,13 +1,13 @@
 <?php
+error_reporting(0);
+$page=$_GET['page'];
+$amount=3 * ($page - 1);
+
 $db = new PDO("sqlite:./db/blog.db");
-$results = $db->query('SELECT * FROM archives ORDER BY id DESC')->fetchAll();
-// foreach ($results as $key=>$row) {
-	//var_dump($row);
-	// echo $row['title']." ".$row['user_id']." ".$row['time']." ".$row['content']."\n\r";
-    $jsondata=json_encode($results);
-    print_r($jsondata);
-// }
+$results = $db->query("SELECT * FROM archives ORDER BY id DESC LIMIT '$amount',3")->fetchAll();
 
-
+$jsondata=json_encode($results);
+print_r($jsondata);
+//
 
 ?>
